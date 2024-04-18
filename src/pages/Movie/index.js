@@ -14,7 +14,7 @@ function Movie(){
     useEffect(() => {
         
         async function loadMovie(){
-            const response = await api.get(`/movie/${id}`, {
+            await api.get(`/movie/${id}`, {
                 params: {
                     api_key: '2577d69700e36a4e7443e6b54b6f6a4b',
                     language: 'pt-BR',
@@ -50,7 +50,7 @@ function Movie(){
         // se myList nao for nula, ele vai fazer o parse, se for, vai iniciar um array vazio
         let savedMovies = JSON.parse(myList) || [];
 
-        const hasMovie = savedMovies.some(saved => saved.id == movie.id);
+        const hasMovie = savedMovies.some(saved => saved.id === movie.id);
 
         if(hasMovie){
             alert('Esse filme já está na lista');
