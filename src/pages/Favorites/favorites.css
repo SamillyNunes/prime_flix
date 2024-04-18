@@ -36,3 +36,14 @@
     color: #116feb;
     margin-right: 14px;
 }
+
+.my-movies div button{
+    padding: 10px;
+    border: none;
+    transition: all 0.5s;
+}
+
+.my-movies div button:hover{
+    background-color: red;
+    color: #fff;
+}
