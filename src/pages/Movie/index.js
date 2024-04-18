@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import api from '../../services/api';
 import './movie.css';
 
 function Movie(){
     const { id } = useParams();
+    const navigation = useNavigate();
+
     const [movie, setMovie] = useState({});
     const [loading, setLoading] = useState(true);
 
@@ -25,6 +27,10 @@ function Movie(){
             })
             .catch(()=>{
                 console.log('filme nao encontrado!');
+                // A flag replace vai garantir que nao tenha a opcao de voltar para a pagina de um filme nao encontrado/
+                // ja que nao teria sentido voltar pra uma pagina de 'erro'
+                navigation("/", { replace: true });
+                return; //pra garantir que vai parar aqui
             });
 
 
@@ -36,7 +42,7 @@ function Movie(){
             console.log('Componente foi desmontado');
         }
 
-    }, []);
+    }, [id, navigation]);
 
     if(loading){
         return (
