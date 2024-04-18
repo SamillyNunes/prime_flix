@@ -1,8 +1,9 @@
+import AppRoutes from "./routes";
 
 function App() {
   return (
     <div className="App">
-      <h1>Project started</h1>
+      <AppRoutes />
     </div>
   );
 }
